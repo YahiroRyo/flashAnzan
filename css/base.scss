@@ -1,0 +1,22 @@
+@import "module/reset";
+@import "module/button";
+@import "cosmetic";
+
+@import url("http://fonts.googleapis.com/earlyaccess/notosansjapanese.css");
+
+body { font-family: Ubuntu, 'Noto Sans JP', 'Helvetica', 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', '游ゴシック体','Yu Gothic', YuGothic; }
+.header {
+  background-color: $brand-primary;
+  height: 60px;
+}
+.icon {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 3;
+}
+.icon__flex { display: flex; }
+.icon_logo {
+  display: block;
+  width: 65px;
+}
+.icon_title { color: white; }

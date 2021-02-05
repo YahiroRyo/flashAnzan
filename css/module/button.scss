@@ -1,0 +1,29 @@
+@import "brandColors";
+
+.btn {
+  background-color: $brand-primary;
+  border: 2px solid white;
+  box-shadow: 2px 2px $brand-supprt;
+  color: white;
+  display: block;
+  font-size: 20px;
+  min-width: 200px;
+  padding: 10px 20px;
+  text-align: center;
+  transition: .5s;
+  &:hover {
+    background-color: white;
+    border: 2px solid $brand-primary;
+    box-shadow: 2px 2px darken($brand-supprt, 20%);
+    color: darken($brand-sub-accent, 30%);
+  }
+}
+.btn_recommend {
+  background-color: lighten(red, 25%);
+  box-shadow: 2px 2px lighten(red, 30%);
+  &:hover {
+    border: 2px solid lighten(red, 25%);
+    box-shadow: 2px 2px lighten(red, 5%);
+    color: red;
+  }
+}
