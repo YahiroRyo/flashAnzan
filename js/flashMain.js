@@ -5,12 +5,17 @@ let mainProcessInterval;
 let mainProcessCount = 0;
 let countNum = 3;
 let sum = 0;
+let isAnswer = false;
 
 const count = () => {
   const sound = new Audio('../audio/click.mp3');
   sound.play();
+  let countStr = '';
   const textElement = document.querySelector('.container_text');
-  textElement.innerHTML = countNum;
+  if (countNum == 3) { countStr = '③'; }
+  if (countNum == 2) { countStr = '②'; }
+  if (countNum == 1) { countStr = '①'; }
+  textElement.innerHTML = countStr;
   setTimeout(() => {
     const textElement = document.querySelector('.container_text');
     textElement.innerHTML = "";
@@ -36,6 +41,7 @@ const mainProcess = () => {
   sound.play();
   if (parseInt(params.get('timenum')) == mainProcessCount) {
     mainProcessCount = 0;
+    isAnswer = true;
     clearInterval(mainProcessInterval);
     setTimeout(() => {
       const containerElement = document.querySelector('.container');
@@ -53,6 +59,7 @@ const mainProcess = () => {
           const sound = new Audio('../audio/false.mp3');
           sound.play();
         }
+        isAnswer = false;
       }
     }, (parseFloat(params.get('between')) * 1000) / 2);
   }
