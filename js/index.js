@@ -17,7 +17,8 @@ window.addEventListener('load', () => {
                               + formInputElements[0].value + "&timenum="
                               + formInputElements[1].value + "&digitnum="
                               + formInputElements[2].value + "&loopnum="
-                              + formInputElements[3].value + "&loopcount=0";
+                              + formInputElements[3].value + "&subtraction="
+                              + document.querySelector('.form_checkbox').checked + "&loopcount=0";
     }
   }
 });
