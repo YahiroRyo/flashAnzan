@@ -16,7 +16,8 @@ window.addEventListener('load', () => {
       window.location.href = "pages/flashMain.html?between="
                               + formInputElements[0].value + "&timenum="
                               + formInputElements[1].value + "&digitnum="
-                              + formInputElements[2].value;
+                              + formInputElements[2].value + "&loopnum="
+                              + formInputElements[3].value + "&loopcount=0";
     }
   }
 });

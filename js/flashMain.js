@@ -5,7 +5,7 @@ let mainProcessInterval;
 let mainProcessCount = 0;
 let countNum = 3;
 let sum = 0;
-let isAnswer = false;
+let loopCount = 0;
 
 const count = () => {
   const sound = new Audio('../audio/click.mp3');
@@ -41,26 +41,30 @@ const mainProcess = () => {
   sound.play();
   if (parseInt(params.get('timenum')) == mainProcessCount) {
     mainProcessCount = 0;
-    isAnswer = true;
     clearInterval(mainProcessInterval);
     setTimeout(() => {
-      const containerElement = document.querySelector('.container');
-      containerElement.style = "background-color: white;";
-      containerElement.innerHTML = '<div class="form"><label class="form_label">答えを入力</label><input class="form_input" type="text"><button class="form_button">回答</button></div>'
-      const formButtonElement = document.querySelector('.form_button');
-      formButtonElement.onclick = () => {
-        const formInput = document.querySelector('.form_input');
-        if (parseInt(formInput.value) == sum) {
-          containerElement.innerHTML = '<div class="form"><label class="form_label">正解!</label><button onclick="window.location.reload();" class="form_button">もう一度挑戦</button><button onclick="window.location.href = \'../index.html\';" class="form_button">設定変更</button></div>'
-          const sound = new Audio('../audio/true.mp3');
-          sound.play();
+      //containerElement.innerHTML = '<div class="form"><label class="form_label">答えを入力</label><input class="form_input" type="text"><button class="form_button">回答</button></div>'
+      //const formButtonElement = document.querySelector('.form_button');
+      setTimeout(() => {
+        const containerElement = document.querySelector('.container');
+        containerElement.style = "background-color: white;";
+        containerElement.innerHTML = '<div class="form" style="width: 100%;"><label class="form_label" style="font-size: 300px;">答え ' + sum + '</label><button onclick="window.location.reload();" class="form_button">もう一度挑戦</button><button onclick="window.location.href = \'../index.html\';" class="form_button">設定変更</button></div>'
+        if (parseInt(params.get('loopcount')) + 1 == parseInt(params.get('loopnum'))) {
+          window.location.href = "/";
         } else {
-          containerElement.innerHTML = '<div class="form"><label class="form_label">不正解!</label><label class="form_label">正解は・・・' + String(sum) +'</label><button onclick="window.location.reload();" class="form_button">もう一度挑戦</button><button onclick="window.location.href = \'../index.html\';" class="form_button">設定変更</button></div>'
-          const sound = new Audio('../audio/false.mp3');
-          sound.play();
+          setTimeout(() => {
+            let loopCount = parseInt(params.get('loopcount')) + 1;
+            let willGotoUrl = '';
+            for (let i = 0; i < window.location.href.length; i++) {
+              if (window.location.href[window.location.href.length] == '=') {
+                break;
+              }
+              willGotoUrl = window.location.href.slice(0, -1);
+            }
+            window.location.href = willGotoUrl + String(loopCount);
+          }, 4000);
         }
-        isAnswer = false;
-      }
+      }, 4000)
     }, (parseFloat(params.get('between')) * 1000) / 2);
   }
   let result = '';
