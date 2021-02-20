@@ -50,7 +50,9 @@ const mainProcess = () => {
         containerElement.style = "background-color: white;";
         containerElement.innerHTML = '<div class="form" style="width: 100%;"><label class="form_label" style="font-size: 300px;">答え ' + sum + '</label><button onclick="window.location.reload();" class="form_button">もう一度挑戦</button><button onclick="window.location.href = \'../index.html\';" class="form_button">設定変更</button></div>'
         if (parseInt(params.get('loopcount')) + 1 == parseInt(params.get('loopnum'))) {
-          window.location.href = "../index.html";
+          setTimeout(() => {
+            window.location.href = "../index.html";
+          }, 4000);
         } else {
           setTimeout(() => {
             let loopCount = parseInt(params.get('loopcount')) + 1;
